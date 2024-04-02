@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Feed - Accel Technologies</title>
+    <style>
+        /* Modern styling */
+        body {
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          margin: 0;
+          padding: 0;
+          background-color: #f8f8f8;
+          color: #333;
+        }
+        header {
+          background-color: #333;
+          color: #fff;
+          padding: 20px;
+          text-align: center;
+        }
+        nav {
+          display: flex;
+          justify-content: center;
+          background-color: #444;
+          padding: 10px 0;
+        }
+        nav a {
+          margin: 0 20px;
+          text-decoration: none;
+          color: #fff;
+          font-weight: bold;
+          transition: color 0.3s ease;
+        }
+        nav a:hover {
+          color: #ff6600;
+        }
+        .feed {
+          margin: 20px;
+        }
+        .post {
+          background-color: #fff;
+          padding: 20px;
+          margin-bottom: 20px;
+          border-radius: 8px;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+          cursor: pointer; /* Add cursor pointer to indicate clickable */
+        }
+        .post h2 {
+          margin-bottom: 10px;
+          font-size: 24px; /* Larger font size */
+          color: #333; /* Change color */
+          cursor: pointer; /* Add cursor pointer to indicate clickable */
+        }
+        .post p {
+          margin-bottom: 10px;
+        }
+        .post span {
+          color: #888;
+        }
+        footer {
+          background-color: #333;
+          color: #fff;
+          padding: 10px;
+          text-align: center;
+          position: fixed;
+          bottom: 0;
+          width: 100%;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Dynamic Feed - Accel Technologies</h1>
+</header>
+<nav>
+    <a href="index.html">Home</a>
+    <a href="distros.html">Linux Distros</a>
+    <a href="help.html">Help Guides</a>
+    <a href="about.html">About Us</a>
+    <a href="feed.html">Feed</a>
+    <a href="contact.html">Contact</a>
+</nav>
+
+<div class="feed" id="feedContainer">
+    <!-- Posts will be added dynamically using JavaScript -->
+</div>
+<footer>
+    <div>&copy; 2024 Accel Technologies, a division of Accel Enterprises. All rights reserved.</div>
+</footer>
+
+<script>
+    // Simulated posts data (can come from a server or database)
+    const postsData = [
+      { title: 'Post Title 1', content: 'This is the content of the first post.', link: 'https://www.example.com/page1.html' },
+      { title: 'Post Title 2', content: 'This is the content of the second post.', link: 'https://www.example.com/page2.html' }
+      // Add more posts as needed
+    ];
+
+    function addPost(postData) {
+      const postContainer = document.getElementById('feedContainer');
+      if (postContainer) {
+        const postDiv = document.createElement('div');
+        postDiv.classList.add('post');
+
+        const postTitleLink = document.createElement('a');
+        postTitleLink.textContent = postData.title;
+        postTitleLink.href = postData.link;
+        postTitleLink.target = '_blank'; // Open link in a new tab
+        postTitleLink.style.fontSize = '24px'; // Set font size
+        postTitleLink.style.color = '#333'; // Set font color
+        postDiv.appendChild(postTitleLink);
+
+        const postContentElement = document.createElement('p');
+        postContentElement.textContent = postData.content;
+        postDiv.appendChild(postContentElement);
+
+        postContainer.appendChild(postDiv);
+      }
+    }
+
+    // Loop through the posts data and add posts dynamically
+    postsData.forEach(post => {
+      addPost(post);
+    });
+</script>
+</body>
+</html>
